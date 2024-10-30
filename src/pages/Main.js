@@ -14,10 +14,10 @@ const Main = () => {
           style={styles.logo}
         />
       </div>
-      <div style={styles.buttonContainer}>
-       <Button text='Start' nextPathOnClick= '/selectAttributes'/>
-       <Button text='Make question' nextPathOnClick= '/selectAttributes'/>
-      </div>
+	<div style={{margin:'60px 0', display:'flex', flexDirection: 'column'}}>
+    	<Button text='Start Quiz' nextPathOnClick= '/selectAttributes'/>
+    	<Button text='Add a question' nextPathOnClick= '/selectAttributes'/>
+	</div>
     </div>
   );
 };
