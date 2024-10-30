@@ -1,6 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom"
+import background from '../assets/background.png';
 
 const MakeQuestionPartTwo = () => {
+  const navigate = useNavigate()
+  const [answers, setAnswers] = useState(['', '', '', '']);
+  const [selectedCircles, setSelectedCircles] = useState([false, false, false, false]);
+
+  const handleInputChange = (index, value) => {
+    const updatedAnswers = [...answers];
+    updatedAnswers[index] = value;
+    setAnswers(updatedAnswers);
+  };
+
+  const toggleCircle = (index) => {
+    const updatedCircles = [...selectedCircles];
+    updatedCircles[index] = !updatedCircles[index];
+    setSelectedCircles(updatedCircles);
+  };
+
   return (
     <div style={styles.container}>
       <div style={styles.header}>
@@ -11,9 +29,13 @@ const MakeQuestionPartTwo = () => {
         {['1', '2', '3', '4'].map((num, index) => (
           <div key={index} style={styles.answerBlock}>
             <span style={styles.answerLabel}>Answer {num}</span>
-            <div style={styles.textInput}>
-              <span style={styles.textPlaceholder}>write answer{num}</span>
-            </div>
+            <input
+              type="text"
+              value={answers[index]}
+              onChange={(e) => handleInputChange(index, e.target.value)}
+              placeholder={`write answer ${num}`}
+              style={styles.textInput}
+            />
           </div>
         ))}
       </div>
@@ -23,18 +45,20 @@ const MakeQuestionPartTwo = () => {
         <div style={styles.circleGroup}>
           {[1, 2, 3, 4].map((option, index) => (
             <div key={index} style={styles.circleBlock}>
-              <img
-                src="https://placeholder.pics/svg/35x35"
-                alt="circle icon"
-                style={styles.circle}
-              />
+              <div
+                style={{
+                  ...styles.circle,
+                  backgroundColor: selectedCircles[index] ? 'green' : 'white',
+                }}
+                onClick={() => toggleCircle(index)}
+              ></div>
               <span style={styles.optionText}>{option}</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div style={styles.finishButton}>
+      <div style={styles.finishButton} onClick={()=> {navigate('/')}}>
         <span style={styles.buttonText}>Finish creating</span>
       </div>
     </div>
@@ -50,7 +74,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     padding: '30px',
-    backgroundImage: `url('https://placeholder.pics/svg/412x917')`,
+    backgroundImage: `url(${background})`,
     backgroundSize: 'cover',
   },
   header: {
@@ -83,19 +107,15 @@ const styles = {
     marginBottom: '10px',
   },
   textInput: {
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: '#f6f6f6',
-    border: '1px solid #f4d7c0',
     padding: '8px 13px',
-    borderRadius: '4px',
-  },
-  textPlaceholder: {
-    color: '#838383',
-    fontFamily: 'Inter',
     fontSize: '30px',
     lineHeight: '36.31px',
     fontWeight: '700',
+    color: '#838383',
+    fontFamily: 'Inter',
+    backgroundColor: '#f6f6f6',
+    border: '1px solid #f4d7c0',
+    borderRadius: '4px',
   },
   questionCorrect: {
     width: '320px',
@@ -121,6 +141,9 @@ const styles = {
   circle: {
     width: '35px',
     height: '35px',
+    borderRadius: '50%',
+    border: '1px solid #000000',
+    cursor: 'pointer',
   },
   optionText: {
     fontFamily: 'Inter',

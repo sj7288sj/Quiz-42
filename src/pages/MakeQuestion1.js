@@ -1,127 +1,70 @@
 import React from 'react';
+import background from '../assets/background.png';
+import ChooseTile from '../components/chooseTile';
+import TextTile from '../components/textTile';
+import Button from '../components/Button';
 
-const MakeQuestion = () => {
+const MakeQuestion1 = () => {
+	const subjects = ["Libft", "ft_printf", "get_next_line", "Born2beroot", "push_swap", "minitalk", "so_long", "pipex", "Philosophers", "minishell", "cub3D", "NetPractice", "ft_server", "CPP Modules", "Inception", "ft_containers", "ft_irc", "webserv", "ft_transcendence"];
+	const level = ["easy", "medium", "hard"];
   return (
-    <div style={styles.container}>
-      <div style={styles.header}>
-        <span style={styles.headerText}>Make Question</span>
-      </div>
-
-      <div style={styles.attributeContainer}>
-        <div style={styles.attribute}>
-          <span style={styles.label}>Subject</span>
-          <div style={styles.dropdown}>
-            <span style={styles.placeholder}>select subject</span>
-            <img
-              src="https://placeholder.pics/svg/27x27"
-              alt="dropdown icon"
-              style={styles.icon}
-            />
-          </div>
-        </div>
-
-        <div style={styles.attribute}>
-          <span style={styles.label}>Difficulty</span>
-          <div style={styles.dropdown}>
-            <span style={styles.placeholder}>select difficulty</span>
-            <img
-              src="https://placeholder.pics/svg/27x27"
-              alt="dropdown icon"
-              style={styles.icon}
-            />
-          </div>
-        </div>
-
-        <div style={styles.attribute}>
-          <span style={styles.label}>Question</span>
-          <div style={styles.textarea}>
-            <span style={styles.textPlaceholder}>write question</span>
-          </div>
-        </div>
-      </div>
-
-      <div style={styles.nextButton}>
-        <span style={styles.nextButtonText}>Next</span>
-      </div>
+	<div style={styles.container}>
+	<div style={styles.header}>
+	  <span style={styles.headerText}>Make a question</span>
+	</div>
+	<div style={styles.whiteDropDown}>
+	<div style={styles.attributeContainer}>
+	<ChooseTile title="Subject" text="select subject" option={subjects}/>
+	<ChooseTile title="Difficulty" text="select difficulty" option={level}/>
+	<TextTile title="Question" text="write a question"/>
+	<Button text="next" nextPathOnClick="/makeQuestion2"/>
+	</div>
     </div>
+	</div>
   );
 };
 
+
+
 const styles = {
-  container: {
-    width: '412px',
-    height: '917px',
-    backgroundColor: '#ffffff',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: '30px',
-    backgroundImage: `url('https://placeholder.pics/svg/412x917')`,
-    backgroundSize: 'cover',
-  },
+    container: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
+		width: '100%',
+		height: '100vh',
+		backgroundImage: `url(${background})`,
+		backgroundSize: 'cover',
+		overflow: 'auto',
+	  },
+	  whiteDropDown: {
+		display: 'flex',
+		width: '450px',
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: 'white',              // Set background to white
+		borderRadius: '20px',                   // Add curved corners
+		boxShadow: '3px -3px 10px rgba(0, 0, 0, 0.4)',  // Top-right shadow
+		padding: '30px',
+		margin: '50px, 0',                   // Optional padding for inner spacing
+	  },	  
   header: {
-    marginBottom: '20px',
+    marginBottom: '50px',
   },
   headerText: {
     fontFamily: 'Jersey',
     fontSize: '60px',
     lineHeight: '60px',
     color: '#000000',
-    textShadow: '0 0 2px #fff2e2',
+    textShadow:  '2px 2px 4px rgba(0, 0, 0, 0.5)',
   },
   attributeContainer: {
     width: '365px',
     display: 'flex',
     flexDirection: 'column',
     gap: '30px',
-  },
-  attribute: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  label: {
-    fontFamily: 'Inter',
-    fontSize: '30px',
-    lineHeight: '36.31px',
-    fontWeight: '700',
-    color: '#000000',
-    marginBottom: '10px',
-  },
-  dropdown: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#f6f6f6',
-    border: '1px solid #f4d7c0',
-    padding: '8px 13px',
-    borderRadius: '4px',
-  },
-  placeholder: {
-    color: '#838383',
-    fontFamily: 'Inter',
-    fontSize: '30px',
-    lineHeight: '36.31px',
-    fontWeight: '700',
-  },
-  icon: {
-    width: '27px',
-    height: '27px',
-  },
-  textarea: {
-    display: 'flex',
-    alignItems: 'flex-start',
-    backgroundColor: '#f6f6f6',
-    border: '1px solid #f4d7c0',
-    padding: '8px 13px',
-    borderRadius: '4px',
-    height: '200px',
-  },
-  textPlaceholder: {
-    color: '#838383',
-    fontFamily: 'Inter',
-    fontSize: '20px',
-    lineHeight: '24.2px',
-    fontWeight: '700',
   },
   nextButton: {
     marginTop: '50px',
@@ -139,4 +82,4 @@ const styles = {
   },
 };
 
-export default MakeQuestion;
+export default MakeQuestion1;

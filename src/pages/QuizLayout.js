@@ -1,28 +1,78 @@
-import React from 'react';
 import Button from '../components/Button.js';
 
+const QuizLayout = () => {
+	const jsQuizz = {
+		questions: [
+		  {
+			question:
+			  "Which of the following is used in React.js to increase performance?",
+			choices: [
+			  "Virtual DOM",
+			  "Original DOM",
+			  "Both A and B",
+			  "None of the above",
+			],
+			type: "MCQs",
+			correctAnswer: "Virtual DOM",
+		  },
+		  {
+			question: "What is ReactJS?",
+			choices: [
+			  "Server-side framework",
+			  "User Interface framework",
+			  "both a and b",
+			  "None of the above",
+			],
+			type: "MCQs",
+			correctAnswer: "User Interface framework",
+		  },
+		  {
+			question:
+			  "Identify the one which is used to pass data to components from outside",
+			choices: ["Render with arguments", "setState", "PropTypes", "props"],
+			type: "MCQs",
+			correctAnswer: "props",
+		  },
+		  {
+			question: "In which language is React.js written?",
+			choices: ["Python", "Java", "C#", "JavaScript"],
+			type: "MCQs",
+			correctAnswer: "JavaScript",
+		  },
+		  {
+			question: "What is Babel?",
+			choices: [
+			  "JavaScript interpreter",
+			  "JavaScript transpiler",
+			  "JavaScript compiler",
+			  "None of the above",
+			],
+			type: "MCQs",
+			correctAnswer: "JavaScript compiler",
+		  },
+		],
+	  };
+  const index = 0; // Assuming you want the first question
+    // Assuming the structure of quizModule is similar to your previous example
+    const quizQuestion = jsQuizz.questions[index];
+      // Destructure the question object
+      const { correctAnswer, choices } = quizQuestion;
 
-async function QuizLayout(data)
-{
-  const quizModule = await import(`./${data[0]}`);
-  let index = data[1];
-  //   const {question, choices, correctAnswer} = questions[currentQuestion];
+      // Select incorrect answers by filtering out the correct answer
+      const incorrectAnswers = choices.filter(choice => choice !== correctAnswer);
+      // Randomly select 3 incorrect answers
+      const selectedIncorrectAnswers = incorrectAnswers.sort(() => 0.5 - Math.random()).slice(0, 3);
+      // Combine the correct answer with the selected incorrect answers
+      const allAnswers = [correctAnswer, ...selectedIncorrectAnswers];
+      // Shuffle the answers for random order
+      const shuffled = allAnswers.sort(() => 0.5 - Math.random());
 
-  const question = quizModule.jsQuizz.questions[index];
+      // Update state
+ // No dependencies, runs once when the component mounts
 
-  // Destructure the question object
-  const { correctAnswer, choices } = question;
-  // Select incorrect answers by filtering out the correct answer
-  const incorrectAnswers = choices.filter(choice => choice !== correctAnswer);
-  // Randomly select 3 incorrect answers
-  const selectedIncorrectAnswers = incorrectAnswers.sort(() => 0.5 - Math.random()).slice(0, 3);
-  // Combine the correct answer with the selected incorrect answers
-  const allAnswers = [correctAnswer, ...selectedIncorrectAnswers];
-  // Shuffle the answers for random order
-  const shuffledAnswers = allAnswers.sort(() => 0.5 - Math.random());
-
-
-  return (
+  // Render the component
+ // Render the component
+return (
     <div style={styles.container}>
       <div style={styles.header}>
         <span style={styles.text}>Subject_name</span>
@@ -31,24 +81,20 @@ async function QuizLayout(data)
       </div>
 
       <div style={styles.questionContainer}>
-        <>
-          <span style={styles.questionNumber}>1</span>
-          <h2>{question}</h2>
-          <ul>
-      <div style={styles.answersContainer}>
-        {shuffledAnswers.map((answer, index) => (
-          <div key={index} style={styles.answer}>
-            <span style={styles.answerNumber}>
-              {['①', '②', '③', '④'][index]}
-            </span>
-            <span style={styles.answerText}>
-              {answer}
-            </span>
-          </div>
-        ))}
-      </div>
-    </ul>
-        </>
+        <span style={styles.questionNumber}>1</span>
+        <h2>{quizQuestion.question}</h2>  {/* Corrected here */}
+        <div style={styles.answersContainer}>
+          {shuffled.map((answer, index) => (
+            <div key={index} style={styles.answer}>
+              <span style={styles.answerNumber}>
+                {['①', '②', '③', '④'][index]}
+              </span>
+              <span style={styles.answerText}>
+                {answer}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div style={styles.nextButton}>
@@ -59,7 +105,8 @@ async function QuizLayout(data)
         <Button text="Go to main" click="/" />
       </div>
     </div>
-  );
+);
+
 };
 
 const styles = {

@@ -31,6 +31,7 @@ function Button(props){
 			}
 			else
 				navigate(props.nextPathOnClick)
+		
 		}}
 		>
 			<span style={style.text}>{props.text}</span>
