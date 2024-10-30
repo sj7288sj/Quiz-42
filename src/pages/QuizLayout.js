@@ -1,7 +1,14 @@
 import React from 'react';
 import Button from '../components/Button.js';
+import { useState } from 'react';
 
-const QuizLayout = () => {
+
+const QuizLayout = ({questions }) => {
+
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+
+  const {question, choices, correctAnswer} = questions[currentQuestion];
+
   return (
     <div style={styles.container}>
       <div style={styles.header}>
@@ -10,32 +17,38 @@ const QuizLayout = () => {
         <span style={styles.text}>correct / total</span>
       </div>
 
-      <div style={styles.questionContainer}>
+      {/* <div style={styles.questionContainer}>
         <span style={styles.questionNumber}>1</span>
         <span style={styles.questionText}>
-          What is more suitable to Jesus?
+          question
         </span>
+      </div> */}
+      <div className='quiz-container'>
+        <>
+          <span className='active-question-no'>{currentQuestion + 1}</span>
+          <span className='total-question'>{question.lenght}</span>
+        </>
       </div>
 
       <div style={styles.answersContainer}>
         {['1', '2', '3', '4'].map((num, index) => (
           <div key={index} style={styles.answer}>
-            <span style={styles.answerNumber}>①②③④"[index]</span>
+            <span style={styles.answerNumber}>
+              {['①', '②', '③', '④'][index]}
+            </span>
             <span style={styles.answerText}>
-            black Fedora hat{num}  iconic glove{num} white socks{num} he just cool {num}
+              {`answer ${num}`}
             </span>
           </div>
         ))}
       </div>
 
       <div style={styles.nextButton}>
-      <Button text='Next' click= '/selectAttributes'/>
-        {/* <span style={styles.buttonText}>Next</span> */}
+        <Button text="Next" click={() => {}} />
       </div>
 
       <div style={styles.goToMain}>
-        <Button text='Go to main' click= '/main'/>
-        {/* <span style={styles.mainText}>Go to main</span> */}
+        <Button text="Go to main" click="/" />
       </div>
     </div>
   );
