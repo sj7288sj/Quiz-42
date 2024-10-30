@@ -7,6 +7,14 @@ const QuizPage = () => {
   const navigate = useNavigate();
   const [selectedAnswers, setSelectedAnswers] = useState(Array(4).fill(false));
 
+  // 서로 다른 answerText를 저장한 배열
+  const answers = [
+    "Answer text 1",
+    "Answer text 2",
+    "Answer text 3",
+    "Answer text 4"
+  ];
+
   const handleAnswerClick = (index) => {
     setSelectedAnswers(prevSelectedAnswers => {
       const newSelectedAnswers = [...prevSelectedAnswers];
@@ -36,13 +44,13 @@ const QuizPage = () => {
 
         {/* Answers Section */}
         <div style={styles.answersContainer}>
-          {Array.from({ length: 4 }, (_, i) => (
+          {answers.map((answer, i) => (
             <div key={i} style={styles.answer} onClick={() => handleAnswerClick(i)}>
               <span style={{ ...styles.answerNumber, color: selectedAnswers[i] ? 'red' : 'black' }}>
                 {`①②③④`[i]}
               </span>
               <span style={{ ...styles.answerText, color: selectedAnswers[i] ? 'red' : 'black' }}>
-                {'asdfasdfasd'}
+                {answer}
               </span>
             </div>
           ))}
@@ -132,6 +140,7 @@ const styles = {
   },
   answersContainer: {
     padding: '0 16px',
+    width: '340px',
   },
   answer: {
     display: 'flex',
@@ -147,6 +156,9 @@ const styles = {
   answerText: {
     fontSize: '19px',
     fontWeight: '400',
+    wordWrap: 'break-word', // 단어가 길어지면 줄 바꿈
+    overflow: 'hidden', // 넘치는 부분 숨김
+    whiteSpace: 'normal', // 기본 줄 바꿈 허용
   },
   nextButtonContainer: {
     display: 'flex',
