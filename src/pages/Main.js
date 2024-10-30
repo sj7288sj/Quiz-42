@@ -15,8 +15,8 @@ const Main = () => {
         />
       </div>
       <div style={styles.buttonContainer}>
-       <Button text='Start' nextPathOnClick= '/selectAttributes'/>
-       <Button text='Make question' nextPathOnClick= '/selectAttributes'/>
+        <Button text='Start' click= '/QuizResult'/>
+        <Button text='Make question' click= '/selectAttributes'/>
       </div>
     </div>
   );
@@ -29,7 +29,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-	  height: '100vh',
+    height: '100vh',
     backgroundImage: `url(${background})`,
     backgroundSize: 'cover',
   },
