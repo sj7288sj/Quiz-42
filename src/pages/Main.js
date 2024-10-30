@@ -15,7 +15,7 @@ const Main = () => {
         />
       </div>
       <div style={styles.buttonContainer}>
-        <Button text='Start' click= '/selectAttributes'/>
+        <Button text='Start' click= '/QuizResult'/>
         <Button text='Make question' click= '/selectAttributes'/>
       </div>
     </div>

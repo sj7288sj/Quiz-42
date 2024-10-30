@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from './pages/Main.js';
-import SelectAttributes from './pages/SelectAttributes.js';
+import QuizResult from './pages/QuizResult.js';
 
 
 const QuizApp = () => {
   return (
     <Router>
       <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/selectAttributes" element={<SelectAttributes />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/QuizResult" element={<QuizResult />} />
       </Routes>
     </Router>
   );
