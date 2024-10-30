@@ -40,23 +40,6 @@ function ChooseTile(props) {
 	  </div>
 	);
   }
-// function ChooseTile(props)
-// {
-// 	return(
-// 	<div style={styles.attribute}>
-// 	  <span style={styles.label}>{props.title}</span>
-// 	  <div style={styles.dropdown}>
-// 		<span style={styles.placeholder}>{props.substitle}</span>
-// 		<img
-// 		  src="https://placeholder.pics/svg/27x27"
-// 		  alt="dropdown icon"
-// 		  style={styles.icon}
-// 		/>
-// 	  </div>
-// 	</div>
-// 	);
-// }
-
 
 const styles = {
 
@@ -120,6 +103,5 @@ const styles = {
   },
 
 };
-
 
 export default ChooseTile;

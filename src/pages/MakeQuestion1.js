@@ -1,27 +1,26 @@
 import React from 'react';
 import background from '../assets/background.png';
 import ChooseTile from '../components/chooseTile';
+import TextTile from '../components/textTile';
+import Button from '../components/Button';
 
-const MakeQuestion = () => {
+const MakeQuestion1 = () => {
 	const subjects = ["Libft", "ft_printf", "get_next_line", "Born2beroot", "push_swap", "minitalk", "so_long", "pipex", "Philosophers", "minishell", "cub3D", "NetPractice", "ft_server", "CPP Modules", "Inception", "ft_containers", "ft_irc", "webserv", "ft_transcendence"];
 	const level = ["easy", "medium", "hard"];
   return (
 	<div style={styles.container}>
 	<div style={styles.header}>
-	  <span style={styles.headerText}>Select Types</span>
+	  <span style={styles.headerText}>Make a question</span>
 	</div>
 	<div style={styles.whiteDropDown}>
 	<div style={styles.attributeContainer}>
 	<ChooseTile title="Subject" text="select subject" option={subjects}/>
 	<ChooseTile title="Difficulty" text="select difficulty" option={level}/>
-
-	  </div>
-
-      <div style={styles.nextButton}>
-        <span style={styles.nextButtonText}>Next</span>
-      </div>
-	  </div>
+	<TextTile title="Question" text="write a question"/>
+	<Button text="next" nextPathOnClick="/makeQuestion2"/>
+	</div>
     </div>
+	</div>
   );
 };
 
@@ -41,6 +40,7 @@ const styles = {
 	  },
 	  whiteDropDown: {
 		display: 'flex',
+		width: '450px',
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -82,4 +82,4 @@ const styles = {
   },
 };
 
-export default MakeQuestion;
+export default MakeQuestion1;
