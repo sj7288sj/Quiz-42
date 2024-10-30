@@ -23,7 +23,12 @@ function Button(props){
 	return(
 		<button
 		style={style.layout} 
-		onClick={()=> {navigate(props.nextPathOnClick)}}
+		onClick={()=> {
+			if (props.args)
+				navigate(`${props.nextPathOnClick}/${argsString}`);
+			else
+				navigate(props.nextPathOnClick)
+		}}
 		>
 			<span style={style.text}>{props.text}</span>
 		</button>

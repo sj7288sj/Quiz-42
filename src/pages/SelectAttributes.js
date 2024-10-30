@@ -21,7 +21,7 @@ const SelectAttributes = () => {
 
         </div>
       </div>
-		<Button text="Start" nextPathOnClick="/quizLayout"></Button>
+		<Button text="Start" nextPathOnClick="/quizLayout" args="file.js"></Button>
     </div>
   );
 };
