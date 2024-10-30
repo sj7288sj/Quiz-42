@@ -1,14 +1,26 @@
 import React from 'react';
 import Button from '../components/Button.js';
-import { useState } from 'react';
-import { jsQuizz } from "../constants"
 
 
-const QuizLayout = ({questions }) => {
+async function QuizLayout(data)
+{
+  const quizModule = await import(`./${data[0]}`);
+  let index = data[1];
+  //   const {question, choices, correctAnswer} = questions[currentQuestion];
 
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  
-  const {question, choices, correctAnswer} = questions[currentQuestion];
+  const question = quizModule.jsQuizz.questions[index];
+
+  // Destructure the question object
+  const { correctAnswer, choices } = question;
+  // Select incorrect answers by filtering out the correct answer
+  const incorrectAnswers = choices.filter(choice => choice !== correctAnswer);
+  // Randomly select 3 incorrect answers
+  const selectedIncorrectAnswers = incorrectAnswers.sort(() => 0.5 - Math.random()).slice(0, 3);
+  // Combine the correct answer with the selected incorrect answers
+  const allAnswers = [correctAnswer, ...selectedIncorrectAnswers];
+  // Shuffle the answers for random order
+  const shuffledAnswers = allAnswers.sort(() => 0.5 - Math.random());
+
 
   return (
     <div style={styles.container}>
@@ -22,20 +34,20 @@ const QuizLayout = ({questions }) => {
         <>
           <span style={styles.questionNumber}>1</span>
           <h2>{question}</h2>
-          <ui>
-              <div style={styles.answersContainer}>
-            {['1', '2', '3', '4'].map((num, index) => (
-              <div key={index} style={styles.answer}>
-                <span style={styles.answerNumber}>
-                  {['①', '②', '③', '④'][index]}
-                </span>
-                <span style={styles.answerText}>
-                  {`answer ${num}`}
-                </span>
-              </div>
-            ))}
+          <ul>
+      <div style={styles.answersContainer}>
+        {shuffledAnswers.map((answer, index) => (
+          <div key={index} style={styles.answer}>
+            <span style={styles.answerNumber}>
+              {['①', '②', '③', '④'][index]}
+            </span>
+            <span style={styles.answerText}>
+              {answer}
+            </span>
           </div>
-          </ui>
+        ))}
+      </div>
+    </ul>
         </>
       </div>
 

@@ -18,7 +18,7 @@ const SelectAttributes = () => {
 
         </div>
       </div>
-		<Button text="Start" nextPathOnClick="/quizLayout"></Button>
+		<Button text="Start" nextPathOnClick="/quizLayout" arg1="../constants.js" arg2='0'></Button>
     </div>
   );
 };
