@@ -52,8 +52,8 @@ const QuizLayout = () => {
 				</div>
 
 				<div style={styles.buttonContainer}>
-					<Button text="Next" click={() => {}} customStyle={styles.nextButton} />
-					<Button text="Go to main" click="/" customStyle={styles.goToMain} />
+        <Button text='Back to main' nextPathOnClick= '/'/>
+					<Button text='Add a question' nextPathOnClick= '/makeQuestion1'/>
 				</div>
 			</div>
 		</div>
