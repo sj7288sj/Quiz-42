@@ -16,7 +16,7 @@ const Main = () => {
       </div>
 	<div style={{margin:'60px 0', display:'flex', flexDirection: 'column'}}>
     	<Button text='Start Quiz' nextPathOnClick= '/selectAttributes'/>
-    	<Button text='Add a question' nextPathOnClick= '/selectAttributes'/>
+    	<Button text='Add a question' nextPathOnClick= '/makeQuestion1'/>
 	</div>
     </div>
   );

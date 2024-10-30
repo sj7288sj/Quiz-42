@@ -48,8 +48,7 @@ const styles = {
 		boxShadow: '3px -3px 10px rgba(0, 0, 0, 0.4)',  // Top-right shadow
 		padding: '30px',
 		margin: '50px, 0',                   // Optional padding for inner spacing
-	  },
-	  
+	  },	  
   header: {
     marginBottom: '50px',
   },
