@@ -1,14 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Main from './pages/Main.jsx';
-import SelectAttributes from './pages/SelectAttributes.jsx';
-import MakeQuestion1 from './pages/MakeQuestion1.jsx';
-import MakeQuestion2 from './pages/MakeQuestion2.jsx';
-import QuizResults from './pages/QuizResult.jsx';
-import QuizLayout from './pages/QuizLayout.jsx';
+import Main from './pages/Main.js';
+import SelectAttributes from './pages/SelectAttributes.js';
+import MakeQuestion1 from './pages/MakeQuestion1.js';
+import MakeQuestion2 from './pages/MakeQuestion2.js';
+import QuizResults from './pages/QuizResult.js';
+import QuizLayout from './pages/QuizLayout.js';
 
 
 const QuizApp = () => {
+  
   return (
     <Router>
       <Routes>

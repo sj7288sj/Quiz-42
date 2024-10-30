@@ -1,12 +1,13 @@
 import React from 'react';
 import Button from '../components/Button.js';
 import { useState } from 'react';
+import { jsQuizz } from "../constants"
 
 
 const QuizLayout = ({questions }) => {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
-
+  
   const {question, choices, correctAnswer} = questions[currentQuestion];
 
   return (
@@ -17,30 +18,25 @@ const QuizLayout = ({questions }) => {
         <span style={styles.text}>correct / total</span>
       </div>
 
-      {/* <div style={styles.questionContainer}>
-        <span style={styles.questionNumber}>1</span>
-        <span style={styles.questionText}>
-          question
-        </span>
-      </div> */}
-      <div className='quiz-container'>
+      <div style={styles.questionContainer}>
         <>
-          <span className='active-question-no'>{currentQuestion + 1}</span>
-          <span className='total-question'>{question.lenght}</span>
-        </>
-      </div>
-
-      <div style={styles.answersContainer}>
-        {['1', '2', '3', '4'].map((num, index) => (
-          <div key={index} style={styles.answer}>
-            <span style={styles.answerNumber}>
-              {['①', '②', '③', '④'][index]}
-            </span>
-            <span style={styles.answerText}>
-              {`answer ${num}`}
-            </span>
+          <span style={styles.questionNumber}>1</span>
+          <h2>{question}</h2>
+          <ui>
+              <div style={styles.answersContainer}>
+            {['1', '2', '3', '4'].map((num, index) => (
+              <div key={index} style={styles.answer}>
+                <span style={styles.answerNumber}>
+                  {['①', '②', '③', '④'][index]}
+                </span>
+                <span style={styles.answerText}>
+                  {`answer ${num}`}
+                </span>
+              </div>
+            ))}
           </div>
-        ))}
+          </ui>
+        </>
       </div>
 
       <div style={styles.nextButton}>
@@ -66,6 +62,7 @@ const styles = {
     backgroundSize: 'cover',
     padding: '20px',
   },
+
   header: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -78,6 +75,7 @@ const styles = {
     lineHeight: '32px',
     color: '#000000',
   },
+
   questionContainer: {
     display: 'flex',
     alignItems: 'flex-start',
