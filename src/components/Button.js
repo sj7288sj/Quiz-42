@@ -12,7 +12,7 @@ function Button(props){
 	return(
 		<button
 		style={style} 
-		onClick={()=> {navigate(props.click)}}
+		onClick={()=> {navigate(props.nextPathOnClick)}}
 		>
 			{props.text}
 		</button>
