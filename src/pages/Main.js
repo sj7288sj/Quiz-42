@@ -15,8 +15,8 @@ const Main = () => {
         />
       </div>
       <div style={styles.buttonContainer}>
-       <Button text='Start' click= '/selectAttributes'/>
-       <Button text='Make question' click= '/selectAttributes'/>
+       <Button text='Start' nextPathOnClick= '/selectAttributes'/>
+       <Button text='Make question' nextPathOnClick= '/selectAttributes'/>
       </div>
     </div>
   );
