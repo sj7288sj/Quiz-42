@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../components/Button.js';
 
 const QuizLayout = () => {
   return (
@@ -12,29 +13,29 @@ const QuizLayout = () => {
       <div style={styles.questionContainer}>
         <span style={styles.questionNumber}>1</span>
         <span style={styles.questionText}>
-          question question question question question question question
-          question question question question question question question
-          question question question question question question
+          What is more suitable to Jesus?
         </span>
       </div>
 
       <div style={styles.answersContainer}>
         {['1', '2', '3', '4'].map((num, index) => (
           <div key={index} style={styles.answer}>
-            <span style={styles.answerNumber}>①②③④"[index]}</span>
+            <span style={styles.answerNumber}>①②③④"[index]</span>
             <span style={styles.answerText}>
-              answer{num} answer{num} answer{num} answer{num} answer{num} answer{num} answer{num} answer{num} answer{num} answer{num} answer{num} answer{num}
+            black Fedora hat{num}  iconic glove{num} white socks{num} he just cool {num}
             </span>
           </div>
         ))}
       </div>
 
       <div style={styles.nextButton}>
-        <span style={styles.buttonText}>Next</span>
+      <Button text='Next' click= '/selectAttributes'/>
+        {/* <span style={styles.buttonText}>Next</span> */}
       </div>
 
       <div style={styles.goToMain}>
-        <span style={styles.mainText}>Go to main</span>
+        <Button text='Go to main' click= '/main'/>
+        {/* <span style={styles.mainText}>Go to main</span> */}
       </div>
     </div>
   );

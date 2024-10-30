@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from '../components/Button.js';
+
 
 const SelectAttributes = () => {
   return (
@@ -41,7 +43,8 @@ const SelectAttributes = () => {
       </div>
 
       <div style={styles.startButton}>
-        <span style={styles.startButtonText}>Start</span>
+        <Button text='Start' click= '/QuizMain'/>
+        {/* <span style={styles.startButtonText}>Start</span> */}
       </div>
     </div>
   );
