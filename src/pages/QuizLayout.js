@@ -1,40 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
+import background from '../assets/background.png';
+import { useNavigate } from "react-router-dom";
+import './ResultComponent.css';
 
-const QuizLayout = () => {
+const QuizPage = () => {
+  const navigate = useNavigate();
+  const [selectedAnswers, setSelectedAnswers] = useState(Array(4).fill(false));
+
+  const handleAnswerClick = (index) => {
+    setSelectedAnswers(prevSelectedAnswers => {
+      const newSelectedAnswers = [...prevSelectedAnswers];
+      newSelectedAnswers[index] = !newSelectedAnswers[index];
+      return newSelectedAnswers;
+    });
+  };
+
   return (
     <div style={styles.container}>
-      <div style={styles.header}>
-        <span style={styles.text}>Subject_name</span>
-        <span style={styles.text}>difficulty</span>
-        <span style={styles.text}>correct / total</span>
+      {/* Header Section */}
+      <div style={styles.headerImage}>
+        <div style={styles.headerTextContainer}>
+          <span style={styles.headerText}>Libft | easy</span>
+        </div>
+        <div style={styles.headerTextContainer}>
+          <span style={styles.headerText}>0 / 10</span>
+        </div>
       </div>
 
-      <div style={styles.questionContainer}>
-        <span style={styles.questionNumber}>1</span>
-        <span style={styles.questionText}>
-          question question question question question question question
-          question question question question question question question
-          question question question question question question
-        </span>
-      </div>
+      <div style={styles.mainContainer}>
+        {/* Question Section */}
+        <div style={styles.questionContainer}>
+          <div style={styles.questionNumber}>1</div>
+          <div style={styles.questionText}>Question related to Libft</div>
+        </div>
 
-      <div style={styles.answersContainer}>
-        {['1', '2', '3', '4'].map((num, index) => (
-          <div key={index} style={styles.answer}>
-            <span style={styles.answerNumber}>①②③④"[index]}</span>
-            <span style={styles.answerText}>
-              answer{num} answer{num} answer{num} answer{num} answer{num} answer{num} answer{num} answer{num} answer{num} answer{num} answer{num} answer{num}
-            </span>
-          </div>
-        ))}
-      </div>
+        {/* Answers Section */}
+        <div style={styles.answersContainer}>
+          {Array.from({ length: 4 }, (_, i) => (
+            <div key={i} style={styles.answer} onClick={() => handleAnswerClick(i)}>
+              <span style={{ ...styles.answerNumber, color: selectedAnswers[i] ? 'red' : 'black' }}>
+                {`①②③④`[i]}
+              </span>
+              <span style={{ ...styles.answerText, color: selectedAnswers[i] ? 'red' : 'black' }}>
+                {'asdfasdfasd'}
+              </span>
+            </div>
+          ))}
+        </div>
 
-      <div style={styles.nextButton}>
-        <span style={styles.buttonText}>Next</span>
-      </div>
+        {/* Next Button */}
+        <div style={styles.nextButtonContainer}>
+          <span style={styles.nextButtonText} onClick={() => { navigate('/QuizResult') }}>
+            Next
+          </span>
+        </div>
 
-      <div style={styles.goToMain}>
-        <span style={styles.mainText}>Go to main</span>
+        {/* Go to Main Button */}
+        <div style={styles.goToMainButtonContainer}>
+          <span style={styles.goToMainButtonText} onClick={() => { navigate('/') }}>
+            Back to main
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -42,97 +68,116 @@ const QuizLayout = () => {
 
 const styles = {
   container: {
-    width: '412px',
-    height: '917px',
-    backgroundColor: '#ffffff',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundImage: `url('https://placeholder.pics/svg/412x917')`,
-    backgroundSize: 'cover',
-    padding: '20px',
-  },
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     width: '100%',
-    marginBottom: '20px',
+    height: '100vh',
+    backgroundImage: `url(${background})`,
+    backgroundSize: 'cover',
+    overflow: 'auto',
   },
-  text: {
+  headerImage: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderRadius: '20px',
+    boxShadow: '3px -3px 10px rgba(0, 0, 0, 0.4)',
+    padding: '30px',
+    margin: '50px, 50px',
+  },
+  headerTextContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: '340px',
+    height: '20px',
+    padding: '20 10px',
+    marginBottom: '16px',
+  },
+  headerText: {
     fontFamily: 'Jersey',
     fontSize: '32px',
-    lineHeight: '32px',
-    color: '#000000',
+    color: '#000',
+  },
+  mainContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderRadius: '20px',
+    boxShadow: '3px -3px 10px rgba(0, 0, 0, 0.4)',
+    padding: '30px',
+    margin: '50px, 0',
   },
   questionContainer: {
     display: 'flex',
-    alignItems: 'flex-start',
-    marginBottom: '20px',
-    width: '100%',
+    alignItems: 'center',
+    padding: '21px 16px',
+    gap: '16px',
   },
   questionNumber: {
-    fontFamily: 'Jersey',
     fontSize: '80px',
-    lineHeight: '80px',
-    color: '#000000',
-    marginRight: '20px',
+    fontWeight: '400',
+    color: '#000',
   },
   questionText: {
-    fontFamily: 'Inter',
     fontSize: '23px',
-    lineHeight: '27.84px',
-    fontWeight: '700',
-    color: '#000000',
+    fontWeight: '400',
+    color: '#000',
   },
   answersContainer: {
-    width: '100%',
-    marginBottom: '30px',
+    padding: '0 16px',
   },
   answer: {
     display: 'flex',
-    marginBottom: '10px',
+    alignItems: 'center',
+    gap: '8px',
+    paddingBottom: '8px',
+    cursor: 'pointer',
   },
   answerNumber: {
-    fontFamily: 'Jersey',
     fontSize: '30px',
-    lineHeight: '30px',
-    color: '#000000',
-    width: '48px',
+    fontWeight: '400',
   },
   answerText: {
-    fontFamily: 'Inter',
     fontSize: '19px',
-    lineHeight: '22.99px',
-    color: '#000000',
-    width: '320px',
+    fontWeight: '400',
   },
-  nextButton: {
+  nextButtonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '340px',
+    height: '59px',
     backgroundColor: '#fcffeaff',
-    padding: '15px 50px',
     borderRadius: '25px',
     border: '2px solid #f4d7c0ff',
-    marginBottom: '10px',
+    margin: '8px 0',
   },
-  buttonText: {
-    fontFamily: 'Jersey',
+  nextButtonText: {
     fontSize: '48px',
-    lineHeight: '48px',
-    textAlign: 'center',
-    color: '#000000',
+    color: '#000',
   },
-  goToMain: {
-    border: '2px solid #f4d7c0ff',
-    borderRadius: '25px',
-    padding: '10px',
+  goToMainButtonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '102px',
+    height: '41px',
     backgroundColor: '#ffeceaff',
+    borderRadius: '25px',
+    border: '2px solid #f4d7c0ff',
   },
-  mainText: {
+  goToMainButtonText: {
     fontFamily: 'Jersey',
     fontSize: '20px',
-    lineHeight: '20px',
-    textAlign: 'center',
-    color: '#000000',
+    color: '#000',
   },
 };
 
-export default QuizLayout;
+export default QuizPage;
