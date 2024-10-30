@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'Jersey';
+    src: url('./fonts/Jersey 25.ttf') format('truetype'); /* 폰트 파일 경로 */
+    font-weight: normal;
+    font-style: normal;
+  }

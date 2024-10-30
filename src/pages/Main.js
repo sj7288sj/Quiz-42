@@ -1,19 +1,22 @@
 import React from 'react';
-import Button from './components/Button';
-const QuizApp = () => {
+import background from '../assets/background.png';
+import logo from '../assets/42logo.png';
+import Button from '../components/Button.js';
+
+const Main = () => {
   return (
     <div style={styles.container}>
       <div style={styles.quizHeader}>
         <span style={styles.quizText}>QUIZ</span>
         <img
-          src="https://placeholder.pics/svg/115x115"
+          src={logo}
           alt="42 Logo"
           style={styles.logo}
         />
       </div>
       <div style={styles.buttonContainer}>
-        <Button text='Start' />
-        <Button text='Make question'/>
+       <Button text='Start' click= '/selectAttributes'/>
+       <Button text='Make question' click= '/selectAttributes'/>
       </div>
     </div>
   );
@@ -25,9 +28,9 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '412px',
-    height: '917px',   
-    backgroundImage: `url('https://placeholder.pics/svg/412x917')`,
+    width: '100%',
+	  height: '100vh',
+    backgroundImage: `url(${background})`,
     backgroundSize: 'cover',
   },
   quizHeader: {
@@ -70,4 +73,4 @@ const styles = {
   },
 };
 
-export default QuizApp;
+export default Main;
