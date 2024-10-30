@@ -4,6 +4,10 @@ import Button from '../components/Button.js';
 import ChooseTile from '../components/chooseTile.jsx';
 
 const SelectAttributes = () => {
+	const subjects = ["Libft", "ft_printf", "get_next_line", "Born2beroot", "push_swap", "minitalk", "so_long", "pipex", "Philosophers", "minishell", "cub3D", "NetPractice", "ft_server", "CPP Modules", "Inception", "ft_containers", "ft_irc", "webserv", "ft_transcendence"];
+	const level = ["easy", "medium", "hard"];
+	const totalQuestions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+
   return (
     <div style={styles.container}>
       <div style={styles.header}>
@@ -11,9 +15,9 @@ const SelectAttributes = () => {
       </div>
 	  <div style={styles.whiteDropDown}>
       <div style={styles.attributeContainer}>
-      <ChooseTile title="Subject" subtitle="select subject"/>
-	  <ChooseTile title="Subject" subtitle="chose subject"/>
-      <ChooseTile title="Subject" subtitle="chose subject"/>
+      <ChooseTile title="Subject" text="select subject" option={subjects}/>
+	  <ChooseTile title="Difficulty" text="select difficulty" option={level}/>
+      <ChooseTile title="Number of questions" text="insert number(1-10)" option={totalQuestions}/>
 
         </div>
       </div>
@@ -29,9 +33,10 @@ const styles = {
 		alignItems: 'center',
 		justifyContent: 'center',
 		width: '100%',
-		  height: '100vh',
+		height: '100vh',
 		backgroundImage: `url(${background})`,
 		backgroundSize: 'cover',
+		overflow: 'auto',
 	  },
 	  whiteDropDown: {
 		display: 'flex',
