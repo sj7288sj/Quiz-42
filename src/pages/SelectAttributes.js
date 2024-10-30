@@ -1,4 +1,7 @@
 import React from 'react';
+import background from '../assets/background.png';
+import Button from '../components/Button.js';
+import ChooseTile from '../components/chooseTile.jsx';
 
 const SelectAttributes = () => {
   return (
@@ -6,120 +9,57 @@ const SelectAttributes = () => {
       <div style={styles.header}>
         <span style={styles.headerText}>Select Types</span>
       </div>
-
+	  <div style={styles.whiteDropDown}>
       <div style={styles.attributeContainer}>
-        <div style={styles.attribute}>
-          <span style={styles.label}>Subject</span>
-          <div style={styles.dropdown}>
-            <span style={styles.placeholder}>select subject</span>
-            <img
-              src="https://placeholder.pics/svg/27x27"
-              alt="dropdown icon"
-              style={styles.icon}
-            />
-          </div>
-        </div>
+      <ChooseTile title="Subject" subtitle="select subject"/>
+	  <ChooseTile title="Subject" subtitle="chose subject"/>
+      <ChooseTile title="Subject" subtitle="chose subject"/>
 
-        <div style={styles.attribute}>
-          <span style={styles.label}>Difficulty</span>
-          <div style={styles.dropdown}>
-            <span style={styles.placeholder}>select difficulty</span>
-            <img
-              src="https://placeholder.pics/svg/27x27"
-              alt="dropdown icon"
-              style={styles.icon}
-            />
-          </div>
-        </div>
-
-        <div style={styles.attribute}>
-          <span style={styles.label}>Number of quiz</span>
-          <div style={styles.dropdown}>
-            <span style={styles.placeholder}>insert number(1~10)</span>
-          </div>
         </div>
       </div>
-
-      <div style={styles.startButton}>
-        <span style={styles.startButtonText}>Start</span>
-      </div>
+		<Button text="Start" nextPathOnClick="/quizLayout"></Button>
     </div>
   );
 };
 
 const styles = {
-  container: {
-    width: '412px',
-    height: '917px',
-    backgroundColor: '#ffffff',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: '30px',
-    backgroundImage: `url('https://placeholder.pics/svg/412x917')`,
-    backgroundSize: 'cover',
-  },
+    container: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
+		width: '100%',
+		  height: '100vh',
+		backgroundImage: `url(${background})`,
+		backgroundSize: 'cover',
+	  },
+	  whiteDropDown: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: 'white',              // Set background to white
+		borderRadius: '20px',                   // Add curved corners
+		boxShadow: '3px -3px 10px rgba(0, 0, 0, 0.4)',  // Top-right shadow
+		padding: '30px',
+		margin: '50px, 0',                   // Optional padding for inner spacing
+	  },
+	  
   header: {
-    marginBottom: '20px',
+    marginBottom: '50px',
   },
   headerText: {
     fontFamily: 'Jersey',
     fontSize: '60px',
     lineHeight: '60px',
     color: '#000000',
-    textShadow: '0 0 2px #fff2e2',
+    textShadow:  '2px 2px 4px rgba(0, 0, 0, 0.5)',
   },
   attributeContainer: {
     width: '365px',
     display: 'flex',
     flexDirection: 'column',
     gap: '30px',
-  },
-  attribute: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  label: {
-    fontFamily: 'Inter',
-    fontSize: '30px',
-    lineHeight: '36.31px',
-    fontWeight: '700',
-    color: '#000000',
-    marginBottom: '10px',
-  },
-  dropdown: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#f6f6f6',
-    border: '1px solid #f4d7c0',
-    padding: '8px 13px',
-    borderRadius: '4px',
-  },
-  placeholder: {
-    color: '#838383',
-    fontFamily: 'Inter',
-    fontSize: '30px',
-    lineHeight: '36.31px',
-    fontWeight: '700',
-  },
-  icon: {
-    width: '27px',
-    height: '27px',
-  },
-  startButton: {
-    marginTop: '50px',
-    backgroundColor: '#fcffeaff',
-    padding: '15px 50px',
-    borderRadius: '25px',
-    border: '2px solid #f4d7c0ff',
-  },
-  startButtonText: {
-    fontFamily: 'Jersey',
-    fontSize: '48px',
-    lineHeight: '48px',
-    textAlign: 'center',
-    color: '#000000',
   },
 };
 

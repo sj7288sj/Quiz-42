@@ -1,20 +1,31 @@
+import React from 'react';
 import { useNavigate } from "react-router-dom"
 
 function Button(props){
 	const navigate = useNavigate()
 	const style =  {
+	layout: {
+		margin: '30px 0',
 		backgroundColor: '#fcffeaff',
-		borderRadius: '25px',
 		padding: '15px 50px',
-		border: '2px solid #f4d7c0',
-		margin: '20px 0',
+		borderRadius: '25px',
+		border: '2px solid #f4d7c0ff',
+		width: '400px',
+	  },
+	text: {
+		fontFamily: 'Jersey',
+		fontSize: '48px',
+		lineHeight: '48px',
+		textAlign: 'center',
+		color: '#000000',
+	  },
 	}
 	return(
 		<button
-		style={style} 
+		style={style.layout} 
 		onClick={()=> {navigate(props.nextPathOnClick)}}
 		>
-			{props.text}
+			<span style={style.text}>{props.text}</span>
 		</button>
 	)
 
