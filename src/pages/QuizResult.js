@@ -26,7 +26,6 @@ const ResultComponent = ({ subjectName, difficulty, total, correct }) => {
       <div className="result-footer">
         <button className="back-button" onClick={()=> {navigate('/')}}>
           Back to main
-          
         </button>
       </div>
     </div>
